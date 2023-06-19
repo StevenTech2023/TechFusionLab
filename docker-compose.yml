@@ -1,0 +1,6 @@
+version: '3'
+services:
+  techfusionlab:
+    image: steventech0907/techfusionlab
+    ports:
+      - 8080:8080
