@@ -39,7 +39,7 @@ public class MyController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello, World! Branch Test";
+        return "Hello, World!";
     }
 
     @GetMapping("/v1/client/subscribe")
