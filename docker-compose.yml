@@ -4,7 +4,3 @@ services:
     image: steventech0907/techfusionlab
     ports:
       - 8080:8080
-networks:
-  default:
-    external:
-      name: caddy_default
