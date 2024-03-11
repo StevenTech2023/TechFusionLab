@@ -1,6 +1,8 @@
 version: '3'
 services:
   techfusionlab:
+    volumes:
+      - ./conf/:/conf/
     image: steventech0907/techfusionlab
     ports:
       - 8080:8080

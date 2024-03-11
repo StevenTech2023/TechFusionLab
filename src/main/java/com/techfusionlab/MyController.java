@@ -3,6 +3,7 @@ package com.techfusionlab;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -50,25 +51,17 @@ public class MyController {
                     .body("");
         }
 
-//        if (FLGA_CLASH.equals(flag)) {
-//            String content = sendHttpRequest(clashUrl);
-//            return ResponseEntity.ok()
-//                    .contentType(MediaType.TEXT_HTML)
-//                    .body(content);
-//        }
-
         if (FLGA_CLASH.equals(flag)) {
-            String filePath = "/file/clash-subscribe.yaml";
-            Resource resource = new ClassPathResource(filePath);
+            String filePath = "/conf/subscribe-config.yaml";
+            Resource resource = new FileSystemResource(filePath);
             String content = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
             return ResponseEntity.ok()
                     .contentType(MediaType.TEXT_PLAIN)
                     .body(content);
         }
 
-
-        String filePath = "/file/shadowrocket-subscribe.yaml";
-        Resource resource = new ClassPathResource(filePath);
+        String filePath = "/conf/shadowrocket-subscribe.yaml";
+        Resource resource = new FileSystemResource(filePath);
         String content = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
         content = Base64.getEncoder().encodeToString(content.getBytes(StandardCharsets.UTF_8));
         // 返回内容作为响应
